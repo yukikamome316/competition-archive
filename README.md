@@ -1,4 +1,4 @@
-# competition
+# competition-archive
 Competitive Programming Archive
 
 ## How to build cpp files with AC-Library
