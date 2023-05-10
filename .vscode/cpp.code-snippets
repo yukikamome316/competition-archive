@@ -1,0 +1,48 @@
+{
+    "CP template with AtCoder Library": {
+        "prefix": "cp_alc_template",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "#include <atcoder/all>",
+            "#define rep(i, n) for (int i = 0; i < (int)n; i++)",
+            "#define rep2(i, s, n) for (int i = (int)s; i < (int)n; i++)",
+            "using namespace std;",
+            "using namespace atcoder;",
+            "using ll = long long;",
+            "",
+            "int main() {",
+            "    $1",
+            "}"
+        ],
+        "description": "AtCoder Library用のソースコードテンプレート"
+    },
+    "CP Template": {
+        "prefix": "cp_template",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "#define rep(i, n) for (int i = 0; i < (int)n; i++)",
+            "#define rep2(i, s, n) for (int i = (int)s; i < (int)n; i++)",
+            "using namespace std;",
+            "using ll = long long;",
+            "",
+            "int main() {",
+            "    $1",
+            "}"
+        ],
+        "description": "ソースコードテンプレート"
+    },
+    "cout": {
+        "prefix": "cout",
+        "body": [
+            "cout << $1 << endl;"
+        ],
+        "description": "改行付きの標準出力スニペット"
+    },
+    "vector" : {
+        "prefix": "vec",
+        "body": [
+            "vector<$1> $2($3);"
+        ],
+        "description": "vectorスニペット"
+    }
+}
