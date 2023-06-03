@@ -1,6 +1,7 @@
-include
-
 # for executable files
 *
 !*/
 !*.*
+
+# for libraries
+include
