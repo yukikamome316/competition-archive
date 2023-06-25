@@ -6,7 +6,7 @@ using ll = long long;
 
 int main() {
     int n; cin >> n;
-    vector<ll> dp(n);
+    vector<ll> dp(n + 1);
     dp[0] = 1, dp[1] = 1;
     rep2(i, 2, n + 1) {
         dp[i] = dp[i - 1] + dp[i - 2];
