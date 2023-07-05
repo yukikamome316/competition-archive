@@ -1,6 +1,6 @@
 {
     "CP template with AtCoder Library": {
-        "prefix": "cp_alc_template",
+        "prefix": "cp_template_acl",
         "body": [
             "#include <bits/stdc++.h>",
             "#include <atcoder/all>",
