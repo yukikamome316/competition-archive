@@ -47,7 +47,6 @@
         "complex": "cpp",
         "bitset": "cpp",
         "chrono": "cpp",
-        "valarray": "cpp"
     },
     "cSpell.words": [
         "chmax",
