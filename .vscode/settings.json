@@ -49,6 +49,7 @@
         "chrono": "cpp",
     },
     "cSpell.words": [
+        "atcoder",
         "chmax",
         "chmin"
     ]
