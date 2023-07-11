@@ -11,7 +11,7 @@ int main() {
   cin >> s >> t;
 
   vector dp(s.size() + 1, vector<ll>(t.size() + 1));
-  vector dp_prev(s.size() + 1, vector<pair<int, int>>(t.size() + 1));
+  vector dp_prev(s.size() + 1, vector<pair<int, int>>(t.size() + 1, {-1, -1}));
 
   for (int i = 1; i < s.size() + 1; i++) {
     for (int j = 1; j < t.size() + 1; j++) {
@@ -29,6 +29,21 @@ int main() {
       }
     }
   }
-  
 
+  if (dp[s.size()][t.size()] == 0) {
+    cout << endl;
+    return 0;
+  }
+
+  pair<int, int> current = {s.size(), t.size()};
+  string result;
+
+  while (current.first != 0 && current.second != 0) {
+    if (s[current.first - 1] == t[current.second - 1]) {
+      result.insert(result.begin(), s[current.first - 1]);
+    }
+    current = dp_prev[current.first][current.second];
+  }
+
+  cout << result << endl;
 }
