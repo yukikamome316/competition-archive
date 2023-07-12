@@ -9,41 +9,41 @@ template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; }
 // 辞書順にトポロジカルソート
 // graphがDAGで無ければ空の配列を返す
 vector<int> topologicalSort(const vector<vector<int>>& graph) {
-	vector<int> indegrees(graph.size());
+  vector<int> indegrees(graph.size());
 
-	for (const auto& v : graph) {
-		for (const auto& to : v) {
-			++indegrees[to];
-		}
-	}
+  for (const auto& v : graph) {
+    for (const auto& to : v) {
+      ++indegrees[to];
+    }
+  }
 
-	priority_queue<int, vector<int>, greater<int>> pq;
+  priority_queue<int, vector<int>, greater<int>> pq;
 
-	for (int i = 0; i < (int)graph.size(); ++i) {
-		if (indegrees[i] == 0) {
-			pq.push(i);
-		}
-	}
+  for (int i = 0; i < (int)graph.size(); ++i) {
+    if (indegrees[i] == 0) {
+      pq.push(i);
+    }
+  }
 
-	vector<int> result;
+  vector<int> result;
 
-	while (!pq.empty()) {
-		const int from = pq.top(); pq.pop();
+  while (!pq.empty()) {
+    const int from = pq.top(); pq.pop();
 
-		result.push_back(from);
+    result.push_back(from);
 
-		for (const auto& to : graph[from]) {
-			if (--indegrees[to] == 0) {
-				pq.push(to);
-			}
-		}
-	}
+    for (const auto& to : graph[from]) {
+      if (--indegrees[to] == 0) {
+        pq.push(to);
+      }
+    }
+  }
 
-	if (result.size() != graph.size()) {
-		return{};
-	}
+  if (result.size() != graph.size()) {
+    return{};
+  }
 
-	return result;
+  return result;
 }
 
 int main() {
