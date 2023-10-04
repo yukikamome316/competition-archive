@@ -7,23 +7,18 @@ template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; }
 template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
 
 int main() {
-  int K;
-  cin >> K;
-
-  vector<ll> nums;
-
-  rep2(bits, 1, 1ll << 10) {
-    ll num = 0;
-    for (int i = 9; i >= 0; i--) {
-      if (bits & (1ll << i)) {
-        num *= 10;
-        num += i;
+  string S;
+  cin >> S;
+  
+  for (int i = 0; i < S.size(); i++) {
+    for (int j = 0; j < S.size() - i; j++) {
+      string S_sub = S.substr(0, i) + S.substr(i + j);
+      if (S_sub == "keyence") {
+        cout << "YES" << endl;
+        return 0;
       }
     }
-
-    nums.push_back(num);
   }
 
-  sort(nums.begin(), nums.end());
-  cout << nums[K] << endl;
+  cout << "NO" << endl;
 }
