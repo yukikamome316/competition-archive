@@ -30,10 +30,11 @@ int main() {
       auto [x1, y1] = data[i];
       auto [x2, y2] = data[j];
 
-      ll dist = (ll)(x2 - x1) * (x2 - x1);
-      ll dist_sq = dist * dist;
-      if ((ll)(r[i] + r[j]) * (r[i] + r[j]) <= dist_sq
-          && dist > abs(r[i] - r[j])) d.merge(i, j);
+      ll dist_sq = (ll)(x2 - x1) * (x2 - x1) + (ll)(y2 - y1) * (y2 - y1);
+      if (dist_sq > (ll)(r[i] + r[j]) * (r[i] + r[j]) 
+          || dist_sq < (ll)(r[i] - r[j]) * (r[i] - r[j])) continue;
+
+      d.merge(i, j);
     }
   }
 
