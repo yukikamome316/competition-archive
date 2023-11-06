@@ -60,26 +60,46 @@ int main() {
   // X
   bool found_x = false;
   ll found_x_bits = 0;
-  for (auto [val, bits] : axrs) {
-    ll search_val = X - val;
-    if (axls.contains(search_val)) {
-      found_x = true;
-      found_x_bits = bits;
-      found_x_bits <<= axl.size();
-      found_x_bits += axls[search_val];
+  
+  if (ax.size() == 0 && X == 0) {
+    found_x = true;
+  } else {
+    for (auto [val, bits] : axrs) {
+      ll search_val = X - val;
+      if (axls.contains(search_val)) {
+        found_x = true;
+        found_x_bits = bits;
+        found_x_bits <<= axl.size();
+        found_x_bits += axls[search_val];
+        break;
+      } else if (axl.size() == 0 && axrs.contains(X)) {
+        found_x = true;
+        found_x_bits = axrs[X];
+        break;
+      }
     }
   }
 
   // Y
   bool found_y = false;
   ll found_y_bits = 0;
-  for (auto [val, bits] : ayrs) {
-    ll search_val = Y - val;
-    if (ayls.contains(search_val)) {
-      found_y = true;
-      found_y_bits = bits;
-      found_y_bits <<= ayl.size();
-      found_y_bits += ayls[search_val];
+
+  if (ay.size() == 0 && Y == 0) {
+    found_y = true;
+  } else {
+    for (auto [val, bits] : ayrs) {
+      ll search_val = Y - val;
+      if (ayls.contains(search_val)) {
+        found_y = true;
+        found_y_bits = bits;
+        found_y_bits <<= ayl.size();
+        found_y_bits += ayls[search_val];
+        break;
+      } else if (ayl.size() == 0 && ayrs.contains(Y)) {
+        found_y = true;
+        found_y_bits = ayrs[Y];
+        break;
+      }
     }
   }
 
@@ -88,46 +108,46 @@ int main() {
     return 0;
   }
 
+  cout << "Yes" << endl;
+  // cout << "x: " << toBin(found_x_bits) << endl;
+  // cout << "y: " << toBin(found_y_bits) << endl;
+
   string op = "";
   DIR dir = DIR::R;
   rep(i, N) {
-    if (i % 2) {
+    if ((i + 1) % 2) {
       // Y
-      rep(j, N - N / 2) {
-        if (found_y_bits & (1ll << j)) {
-          if (dir == DIR::R) {
-            op += 'L';
-          } else if (dir == DIR::L) {
-            op += 'R';
-          }
-          dir = DIR::U;
-        } else {
-          if (dir == DIR::R) {
-            op += 'R';
-          } else if (dir == DIR::L) {
-            op += 'L';
-          }
-          dir = DIR::D;
+      if (found_y_bits & (1ll << (i / 2))) {
+        if (dir == DIR::R) {
+          op += 'L';
+        } else if (dir == DIR::L) {
+          op += 'R';
         }
+        dir = DIR::U;
+      } else {
+        if (dir == DIR::R) {
+          op += 'R';
+        } else if (dir == DIR::L) {
+          op += 'L';
+        }
+        dir = DIR::D;
       }
     } else {
       // X
-      rep(j, N / 2) {
-        if (found_x_bits & (1ll << j)) {
-          if (dir == DIR::U) {
-            op += 'R';
-          } else if (dir == DIR::D) {
-            op += 'L';
-          }
-          dir = DIR::R;
-        } else {
-          if (dir == DIR::U) {
-            op += 'L';
-          } else if (dir == DIR::D) {
-            op += 'R';
-          }
-          dir = DIR::L;
+      if (found_x_bits & (1ll << (i / 2))) {
+        if (dir == DIR::U) {
+          op += 'R';
+        } else if (dir == DIR::D) {
+          op += 'L';
         }
+        dir = DIR::R;
+      } else {
+        if (dir == DIR::U) {
+          op += 'L';
+        } else if (dir == DIR::D) {
+          op += 'R';
+        }
+        dir = DIR::L;
       }
     }
   }
