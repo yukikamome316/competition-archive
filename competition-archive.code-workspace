@@ -82,7 +82,8 @@
 			"variant": "cpp",
 			"all": "cpp",
 			"dsu": "cpp",
-			"convolution": "cpp"
+			"convolution": "cpp",
+			"segtree": "cpp"
 		}
 	}
 }
